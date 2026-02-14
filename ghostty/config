@@ -1,0 +1,23 @@
+# --- Appearance ---
+background-opacity = 0.95
+window-padding-x = 10
+window-padding-y = 10
+window-decoration = true
+
+# --- Cursor ---
+cursor-style = block
+cursor-style-blink = true
+
+# --- Scrolling ---
+scrollback-limit = 100000
+
+# --- Quick Terminal ---
+quick-terminal-position = left
+quick-terminal-size = 40%
+quick-terminal-animation-duration = 0.15
+
+confirm-close-surface = false
+
+keybind = global:option+space=toggle_quick_terminal
+keybind = cmd+.=new_split:right
+keybind = cmd+-=new_split:down
