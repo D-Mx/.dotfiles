@@ -12,6 +12,13 @@ path=(
 
 export PATH
 
+# ---- asdf ----
+
+. "$(brew --prefix asdf)/libexec/asdf.sh"
+
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+autoload -Uz compinit && compinit
+
 # ---- FUCK! ----
 
 eval $(thefuck --alias)
