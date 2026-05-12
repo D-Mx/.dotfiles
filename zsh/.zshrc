@@ -1,11 +1,11 @@
 export GEM_HOME="$HOME/.gem"
 
 path=(
+  "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
   "$HOME/.local/bin"
   "$HOME/bin"
   "$HOME/.dotfiles/bin"
-  "/usr/local/bin"
-  "$(brew --prefix)/bin"
+  "$HOME/Library/pnpm/bin"
   "$GEM_HOME/bin"
   $path
 )
@@ -14,7 +14,7 @@ export PATH
 
 # ---- asdf ----
 
-. "$(brew --prefix asdf)/libexec/asdf.sh"
+. "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
 
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit && compinit
@@ -48,5 +48,5 @@ eval "$(starship init zsh)"
 # ---- zsh "plugins" ----
 
 ZSH_AUTOSUGGEST_USE_ASYNC=true
-source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
