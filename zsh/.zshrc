@@ -50,3 +50,7 @@ eval "$(starship init zsh)"
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# ---- Local-only config (not tracked) ----
+
+[[ -f ~/.localrc ]] && source ~/.localrc
