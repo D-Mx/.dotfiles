@@ -53,9 +53,15 @@ Run this:
 git clone https://github.com/holman/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
+script/install
 ```
 
-This will symlink the appropriate files in `.dotfiles` to your home directory.
+`script/bootstrap` symlinks every `*.symlink` file to `~/.<name>` and runs
+`bin/dot` to install Homebrew deps. `script/install` then walks every topic's
+`install.sh` — these are needed for configs that live in subdirectories
+(`~/.config/...`, `~/.cursor/...`, `~/.codex/...`) which the basic symlink
+pass can't express.
+
 Everything is configured and tweaked within `~/.dotfiles`.
 
 The main file you'll want to change right off the bat is `zsh/zshrc.symlink`,
@@ -65,6 +71,32 @@ which sets up a few paths that'll be different on your particular machine.
 defaults, and so on. Tweak this script, and occasionally run `dot` from
 time to time to keep your environment fresh and up-to-date. You can find
 this script in `bin/`.
+
+## topics added in this fork
+
+These topics use the per-topic `install.sh` pattern (run via `script/install`)
+because their targets live in subdirectories rather than `~/.<name>`:
+
+- `agents/` — unified `~/.agents` folder. Symlinks `~/.agents` -> this dir,
+  and `~/.claude/agents` -> `~/.agents` for Claude Code (Cursor/Codex read
+  `~/.agents` natively). Drop your shared agent/skill/prompt files here.
+- `claude/` — user-scope Claude Code `settings.json`. Project-scope settings
+  for this repo live separately under `.dotfiles/.claude/settings.local.json`.
+- `codex/` — Codex CLI `config.toml`. Tracks model, approval policy, plugin
+  enables. Per-path trust grants, volatile marketplace cache, and TUI nux
+  state are stripped (the first two leak machine layout; the third churns).
+- `cursor/` — Cursor CLI agent `cli-config.json` (symlinked). Cursor IDE
+  GUI `settings.json` and `keybindings.json` are also symlinked from
+  `cursor/ide/` into `~/Library/Application Support/Cursor/User/`, so
+  edits inside the GUI write straight through to the tracked files.
+- `ghostty/` — symlinks the tracked config to `~/.config/ghostty/config`.
+- `starship/` — same idea for `~/.config/starship/starship.toml`.
+- `asdf/` — `tool-versions.symlink` is auto-linked to `~/.tool-versions` by
+  `script/bootstrap` (no install.sh needed; lives at the top level).
+
+`~/.localrc` is intentionally NOT tracked — it's the machine-local escape
+hatch sourced by [zsh/zshrc.symlink](zsh/zshrc.symlink) (see the comment
+there). Create it by hand on each machine for env vars and secrets.
 
 ## bugs
 

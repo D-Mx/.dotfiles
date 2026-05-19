@@ -1,0 +1,31 @@
+{
+    "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#2a2a2a"
+    },
+    "editor.tabSize": 2,
+    "editor.rulers": [
+        120
+    ],
+    "editor.minimap.enabled": false,
+    "editor.inlineSuggest.enabled": true,
+    "editor.stickyScroll.enabled": true,
+    "diffEditor.renderSideBySide": false,
+    "explorer.autoReveal": "focusNoScroll",
+    "application.shellEnvironmentResolutionTimeout": 15,
+    "editor.linkedEditing": true,
+    "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
+    "lldb.launch.expressions": "native",
+    "editor.fontSize": 13,
+    "terminal.integrated.fontSize": 13,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.accessibilitySupport": "off",
+    "workbench.iconTheme": "material-icon-theme",
+    "javascript.preferGoToSourceDefinition": true,
+    "typescript.preferGoToSourceDefinition": true,
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "tailwind-fold.autoFold": true,
+    "workbench.colorTheme": "Default Dark Modern",
+    "window.autoDetectColorScheme": false
+}
