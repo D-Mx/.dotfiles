@@ -1,6 +1,7 @@
 export GEM_HOME="$HOME/.gem"
 
 path=(
+  "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
   "$HOME/.local/bin"
   "$HOME/bin"
   "$HOME/.dotfiles/bin"
@@ -17,8 +18,6 @@ setopt INC_APPEND_HISTORY      # Write to history file immediately, not on exit
 setopt SHARE_HISTORY           # Share history across all sessions in real time
 
 # ---- asdf ----
-
-. "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
 
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit && compinit
