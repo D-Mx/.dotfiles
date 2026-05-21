@@ -1,7 +1,6 @@
 export GEM_HOME="$HOME/.gem"
 
 path=(
-  "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
   "$HOME/.local/bin"
   "$HOME/bin"
   "$HOME/.dotfiles/bin"
@@ -12,6 +11,11 @@ path=(
 
 export PATH
 
+# ---- zsh config ----
+
+setopt INC_APPEND_HISTORY      # Write to history file immediately, not on exit
+setopt SHARE_HISTORY           # Share history across all sessions in real time
+
 # ---- asdf ----
 
 . "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
@@ -21,7 +25,11 @@ autoload -Uz compinit && compinit
 
 # ---- FUCK! ----
 
-eval $(thefuck --alias)
+fuck() {
+  unfunction fuck
+  eval $(thefuck --alias)
+  fuck "$@"
+}
 
 # ---- FZF ----
 
@@ -34,7 +42,10 @@ export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-ran
 export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
-source <(fzf --zsh)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.dotfiles/fzf/fzf.git.zsh
+
+bindkey "ç" fzf-cd-widget
 
 # ---- Zoxide (better cd) ----
 
@@ -42,7 +53,7 @@ eval "$(zoxide init zsh)"
 
 # ---- Starship (prompt) ----
 
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export STARSHIP_CONFIG=~/.dotfiles/starship/starship.toml
 eval "$(starship init zsh)"
 
 # ---- zsh "plugins" ----
@@ -50,7 +61,11 @@ eval "$(starship init zsh)"
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
-# ---- Local-only config (not tracked) ----
+# Bind up/down arrows for substring search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
-[[ -f ~/.localrc ]] && source ~/.localrc
+# ---- Aliases ----
+alias st='open -a "Sublime Text"'
