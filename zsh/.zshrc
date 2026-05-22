@@ -41,7 +41,7 @@ export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-ran
 export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 source ~/.dotfiles/fzf/fzf.git.zsh
 
 bindkey "ç" fzf-cd-widget
