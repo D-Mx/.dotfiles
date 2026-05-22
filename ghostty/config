@@ -1,5 +1,7 @@
 # --- Appearance ---
+theme = TokyoNight
 background-opacity = 0.95
+background-blur-radius = 10
 window-padding-x = 10
 window-padding-y = 10
 window-decoration = true
@@ -8,11 +10,8 @@ window-decoration = true
 cursor-style = block
 cursor-style-blink = true
 
-# --- Scrolling ---
-scrollback-limit = 100000
-
 # --- Quick Terminal ---
-quick-terminal-position = left
+quick-terminal-position = top
 quick-terminal-size = 40%
 quick-terminal-animation-duration = 0.15
 
