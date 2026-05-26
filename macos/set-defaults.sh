@@ -16,6 +16,10 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
 # Always open everything in Finder's list view. This is important.
 defaults write com.apple.Finder FXPreferredViewStyle Nlsv
 
+# Always show filename extensions and hidden files in Finder.
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
 # Show the ~/Library folder.
 chflags nohidden ~/Library
 
