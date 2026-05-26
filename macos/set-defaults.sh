@@ -34,6 +34,37 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 defaults write com.apple.dock wvous-bl-corner -int 5
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
+# Set up Dock apps. Finder is always first.
+dock_item() {
+  printf '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>%s</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' "$1"
+}
+
+add_dock_app() {
+  app_path="$1"
+
+  if [ -e "$app_path" ]; then
+    defaults write com.apple.dock persistent-apps -array-add "$(dock_item "$app_path")"
+  else
+    echo "Skipping Dock item: $app_path not found."
+  fi
+}
+
+defaults write com.apple.dock persistent-apps -array
+add_dock_app "/System/Applications/Reminders.app"
+add_dock_app "/Applications/Spotify.app"
+add_dock_app "/System/Applications/Calendar.app"
+add_dock_app "/System/Applications/Mail.app"
+add_dock_app "/Applications/Google Chrome.app"
+add_dock_app "/Applications/Xcode.app"
+add_dock_app "/Applications/Claude.app"
+add_dock_app "/Applications/Codex.app"
+add_dock_app "/Applications/Cursor.app"
+add_dock_app "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
+add_dock_app "/Applications/Sublime Text.app"
+add_dock_app "/Applications/Sublime Merge.app"
+add_dock_app "/Applications/Ghostty.app"
+killall Dock
+
 # Hide Safari's bookmark bar.
 defaults write com.apple.Safari.plist ShowFavoritesBar -bool false
 
