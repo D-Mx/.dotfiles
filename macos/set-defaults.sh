@@ -37,6 +37,9 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 # Keep Dock icons compact.
 defaults write com.apple.dock tilesize -int 36
 
+# Auto-hide the Dock and show it on hover.
+defaults write com.apple.dock autohide -bool true
+
 # Set up Dock apps. Finder is always first.
 dock_item() {
   printf '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>%s</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' "$1"
