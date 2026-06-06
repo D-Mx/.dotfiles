@@ -66,5 +66,9 @@ source "$HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substrin
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# ---- AI Tools ----
+
+export XCODEBUILDMCP_STARTUP_TIMEOUT_MS=10000
+
 # ---- Aliases ----
 alias st='open -a "Sublime Text"'
