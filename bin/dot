@@ -45,6 +45,7 @@ echo "› git pull"
 git -C $ZSH pull
 
 # Set macOS defaults
+echo "› set macOS defaults"
 $ZSH/macos/set-defaults.sh
 
 # Set macOS hostname
