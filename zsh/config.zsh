@@ -37,3 +37,7 @@ bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^?' backward-delete-char
+
+# ---- AI tools ----
+
+export XCODEBUILDMCP_STARTUP_TIMEOUT_MS=10000
